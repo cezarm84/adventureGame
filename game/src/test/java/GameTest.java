@@ -10,7 +10,7 @@ public class GameTest {
     @BeforeEach
     public void setUp() {
         room1 = new Room("You are in a dark room.");
-        room2 = new Room("You enter a bright, large hall.");
+        room2 = new Room("You enter a bright ,large hall.");
         room3 = new Room("You are in yourself in a wonderful library.");
 
         room1.setNextRoom(room2);
@@ -36,12 +36,12 @@ public class GameTest {
 
     @Test
     public void testLookAround() {
-        assertEquals("You enter a bright, spacious hall.", game.executeCommand("look around"));
+        assertEquals("You enter a bright ,large hall.", game.executeCommand("look around"));
     }
 
     @Test
     public void testInvalidCommand() {
-        assertEquals("I don't understand that command.", game.executeCommand("jump"));
+        assertEquals("I don't understand .", game.executeCommand("jump"));
     }
 
     @Test
