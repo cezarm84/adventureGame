@@ -12,7 +12,9 @@ public class GameUpdate{
         String[] parts = command.toLowerCase().split(" ", 2);
         String action = parts[0];
         String target = parts.length > 1 ? parts[1] : "";
-
+        if (command.trim().isEmpty()) {
+            return "Please enter a command.";
+        }
         return switch (action) {
             case "go" -> move(target);
             case "look" -> lookAround();
@@ -45,7 +47,7 @@ public class GameUpdate{
         RoomUpdate currentRoom = player.getCurrentRoom();
         StringBuilder sb = new StringBuilder(currentRoom.getDescription() + "\n");
 
-        if (!currentRoom.getItems().isEmpty()) {
+        if (currentRoom.getItems() != null && !currentRoom.getItems().isEmpty()) {
             sb.append("You see: ");
             for (Item item : currentRoom.getItems()) {
                 sb.append(item.getName()).append(", ");
