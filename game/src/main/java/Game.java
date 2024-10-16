@@ -6,16 +6,12 @@ public class Game {
     }
 
     public String executeCommand(String command) {
-        switch (command.toLowerCase()) {
-            case "go forward":
-                return moveForward();
-            case "go back":
-                return moveBack();
-            case "look around":
-                return lookAround();
-            default:
-                return "I don't understand .";
-        }
+        return switch (command.toLowerCase()) {
+            case "go forward" -> moveForward();
+            case "go back" -> moveBack();
+            case "look around" -> lookAround();
+            default -> "I don't understand .";
+        };
     }
 
     private String moveForward() {
