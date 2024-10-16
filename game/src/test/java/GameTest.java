@@ -10,8 +10,8 @@ public class GameTest {
     @BeforeEach
     public void setUp() {
         room1 = new Room("You are in a dark room.");
-        room2 = new Room("You enter a bright ,large hall.");
-        room3 = new Room("You are in yourself in a wonderful library.");
+        room2 = new Room("You enter a bright, large hall.");
+        room3 = new Room("You are in a wonderful library.");
 
         room1.setNextRoom(room2);
         room2.setPreviousRoom(room1);
@@ -24,19 +24,34 @@ public class GameTest {
 
     @Test
     public void testMoveForward() {
-        assertEquals("You move forward to the next room.", game.executeCommand("go forward"));
-        assertEquals(room3, player.getCurrentRoom());
+        // Assuming player starts in room1 and moves to room2, and then to room3
+        player.setCurrentRoom(room1); // Set  room
+
+        // Move forward to room2
+        assertEquals("You enter a bright, large hall.", game.executeCommand("go forward"));
+
+        // Move forward to room3
+        assertEquals("You are in a wonderful library.", game.executeCommand("go forward"));
+
+        // Check if the player's current room is now room3
+        assertEquals(room3.getDescription(), player.getCurrentRoom().getDescription());
     }
 
     @Test
     public void testMoveBack() {
+        // Move forward to ensure we're in room2 first
+        player.setCurrentRoom(room2);
+
+        // Now, test moving back to room1
         assertEquals("You move back to the previous room.", game.executeCommand("go back"));
-        assertEquals(room1, player.getCurrentRoom());
+
+        // Assert that the current room is room1
+        assertEquals(room1.getDescription(), player.getCurrentRoom().getDescription());
     }
 
     @Test
     public void testLookAround() {
-        assertEquals("You enter a bright ,large hall.", game.executeCommand("look around"));
+        assertEquals("You enter a bright, large hall.", game.executeCommand("look around"));
     }
 
     @Test

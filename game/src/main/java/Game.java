@@ -22,7 +22,7 @@ public class Game {
         Room nextRoom = player.getCurrentRoom().getNextRoom();
         if (nextRoom != null) {
             player.setCurrentRoom(nextRoom);
-            return "You move forward to the next room.";
+            return nextRoom.getDescription();
         } else {
             return "There is no room ahead.";
         }
