@@ -18,7 +18,7 @@ jobs:
         java-version: '17'
         distribution: 'adopt'
     - name: Build with Maven
-      run: mvn -B package --file game/pom.xml
+      run: mvn -B package -DskipTests=false --file game/pom.xml -X
     - name: Run tests
-      run:  mvn verify --file game/pom.xml
+      run:  mvn test --file game/pom.xml
 
