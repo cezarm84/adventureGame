@@ -50,7 +50,7 @@ public class GameUpdate{
         if (currentRoom.getItems() != null && !currentRoom.getItems().isEmpty()) {
             sb.append("You see: ");
             for (Item item : currentRoom.getItems()) {
-                sb.append(item.getName()).append(", ");
+                sb.append(item.name()).append(", ");
             }
             sb.setLength(sb.length() - 2);
             sb.append("\n");
@@ -70,7 +70,7 @@ public class GameUpdate{
 
     private String takeItem(String itemName) {
         for (Item item : player.getCurrentRoom().getItems()) {
-            if (item.getName().equalsIgnoreCase(itemName)) {
+            if (item.name().equalsIgnoreCase(itemName)) {
                 player.pickUpItem(item);
                 return "You pick up the " + itemName + ".";
             }
@@ -80,7 +80,7 @@ public class GameUpdate{
 
     private String dropItem(String itemName) {
         for (Item item : player.getInventory()) {
-            if (item.getName().equalsIgnoreCase(itemName)) {
+            if (item.name().equalsIgnoreCase(itemName)) {
                 player.dropItem(item);
                 return "You drop the " + itemName + ".";
             }
@@ -95,7 +95,7 @@ public class GameUpdate{
         }
         StringBuilder sb = new StringBuilder("You are carrying: ");
         for (Item item : inventory) {
-            sb.append(item.getName()).append(", ");
+            sb.append(item.name()).append(", ");
         }
         sb.setLength(sb.length() - 2);
         return sb.toString();

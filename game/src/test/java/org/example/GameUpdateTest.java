@@ -9,16 +9,16 @@ import static org.junit.jupiter.api.Assertions.*;
 public class GameUpdateTest {
     private GameUpdate game;
     private PlayerUpdate player;
-    private RoomUpdate startRoom, northRoom, eastRoom;
+    private RoomUpdate startRoom;
+    private RoomUpdate northRoom;
     private Item key;
-    private NPC guard;
 
     @BeforeEach
     public void setUp() {
         // Create rooms
         startRoom = new RoomUpdate("You are in the starting room.");
         northRoom = new RoomUpdate("You are in the north room.");
-        eastRoom = new RoomUpdate("You are in the east room.");
+        RoomUpdate eastRoom = new RoomUpdate("You are in the east room.");
 
 
         // Set up room connections
@@ -36,7 +36,7 @@ public class GameUpdateTest {
         startRoom.addItem(key);
 
         // Add NPCs
-        guard = new NPC("Guard");
+        NPC guard = new NPC("Guard");
         guard.addDialogue("default", "Hello, traveler!");
         startRoom.addNPC(guard);
     }

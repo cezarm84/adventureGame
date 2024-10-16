@@ -1,24 +1,15 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 public class GameTest {
-
-    @Mock
     private Game game;
-
-    @Mock
     private Player player;
+
     private Room room1, room2, room3;
 
     @BeforeEach
     public void setUp() {
-        MockitoAnnotations.openMocks(this);
         room1 = new Room("You are in a dark room.");
         room2 = new Room("You enter a bright, large hall.");
         room3 = new Room("You are in a wonderful library.");
@@ -28,30 +19,35 @@ public class GameTest {
         room2.setNextRoom(room3);
         room3.setPreviousRoom(room2);
 
-        when(player.getCurrentRoom()).thenReturn(room1);
+        player = new Player(room2);
+        game = new Game(player);
     }
 
     @Test
     public void testMoveForward() {
-        when(game.executeCommand("go forward")).thenReturn("You move forward to the next room.");
+        // Assuming player starts in room1 and moves to room2, and then to room3
+        player.setCurrentRoom(room1); // Set  room
 
-        String result = game.executeCommand("go forward");
-        assertEquals("You move forward to the next room.", result);
+        // Move forward to room2
+        assertEquals("You enter a bright, large hall.", game.executeCommand("go forward"));
 
-        // Additional verification if necessary
-        verify(game).executeCommand("go forward");
+        // Move forward to room3
+        assertEquals("You are in a wonderful library.", game.executeCommand("go forward"));
+
+        // Check if the player's current room is now room3
+        assertEquals(room3.getDescription(), player.getCurrentRoom().getDescription());
     }
 
     @Test
     public void testMoveBack() {
-        when(player.getCurrentRoom()).thenReturn(room2);
-        when(game.executeCommand("go back")).thenReturn("You move back to the previous room.");
+        // Move forward to ensure we're in room2 first
+        player.setCurrentRoom(room2);
 
-        String result = game.executeCommand("go back");
-        assertEquals("You move back to the previous room.", result);
+        // Now, test moving back to room1
+        assertEquals("You move back to the previous room.", game.executeCommand("go back"));
 
-        // Additional verification if necessary
-        verify(game).executeCommand("go back");
+        // Assert that the current room is room1
+        assertEquals(room1.getDescription(), player.getCurrentRoom().getDescription());
     }
 
     @Test
