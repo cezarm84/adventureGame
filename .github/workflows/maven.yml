@@ -30,7 +30,7 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file game/pom.xml
     - name: Run tests
-      run: mvn -B test --file game/pom.xml -Dtest=GameTest -Dmaven.test.failure.ignore=false
+      run: mvn -B test --file game/pom.xml 
 
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
