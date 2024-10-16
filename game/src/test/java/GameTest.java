@@ -1,4 +1,4 @@
-/*import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -70,4 +70,4 @@ public class GameTest {
         player.setCurrentRoom(room1);
         assertEquals("There is no room behind you.", game.executeCommand("go back"));
     }
-}*/
+}

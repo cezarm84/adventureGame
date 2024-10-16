@@ -1,5 +1,5 @@
 
-/*import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
     public class PlayerTest {
@@ -19,4 +19,4 @@ import static org.junit.jupiter.api.Assertions.*;
             player.setCurrentRoom(room2);
             assertEquals(room2, player.getCurrentRoom());
         }
-    }*/
+    }

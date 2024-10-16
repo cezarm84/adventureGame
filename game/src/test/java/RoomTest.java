@@ -1,4 +1,4 @@
-/*import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RoomTest {
@@ -19,4 +19,4 @@ public class RoomTest {
         assertEquals(room2, room1.getNextRoom());
         assertEquals(room1, room2.getPreviousRoom());
     }
-}*/
+}
